@@ -12,7 +12,7 @@ Reliance Digital is an Indian consumer electronics retailer. It is a subsidiary 
 
 <img src= "#"/>
 <ol>
-<ul>Multiple News pages with filter</ul>
+<ul>Multiple pages with filter</ul>
   <ul></ul>
 <ul>Fetching api</ul>
 <ul>Login page</ul>
