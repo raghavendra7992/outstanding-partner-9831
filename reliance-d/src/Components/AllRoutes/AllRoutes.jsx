@@ -6,6 +6,8 @@
 // import Signup from '../Pages/Signup'
 import SmartPhones from "../Pages/SmartPhones"
 import Pagenotfound from '../Pages/Pagenotfound'
+
+import Loginforadmin from '../Pages/Loginforadmin'
 // // import Laptop from '../Pages/Laptop'
 
 // function AllRoutes() {
@@ -50,11 +52,23 @@ import { Route, Routes } from 'react-router-dom'
 import Home from '../Pages/Home'
 
 
+
 const AllRoutes = () => {
   return (
+
+    <div>
+        <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/signup" element={<Signup/>}></Route>
+        <Route path="/cart" element={<Cart/>}></Route>
+        <Route path="/admin-login" element= {<Loginforadmin/>}></Route>
+   
+        <Route path="/smartphones" element={<SmartPhones/>}></Route>
     <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/smartPhones' element={<SmartPhones/>}/>
+
         <Route path="*" element={<Pagenotfound/>}></Route>
         {/* <Route path='/laptops' element={<Laptop/>}/>
         <Route path='/small_appliances' element={<SmallAppliances/>}/>
