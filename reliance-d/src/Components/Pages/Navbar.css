@@ -1,0 +1,88 @@
+.main_menu {
+  position: relative;
+  /* display: inline-block; */
+  /* border: 1px solid black; */
+  margin-left: 20px;
+  width: max-content;
+  /* background-color: yellow; */
+}
+.main_menu:hover{
+  background-color: #e42529;
+}
+.menu-btn{
+  text-decoration: none;
+  /* color: grey; */
+  font-size: 14px;
+  font-weight: bold;
+  /* border: 1px solid red; */
+}
+.xyz {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  left: 0;
+  z-index: 1;
+  transition: 0.1s;
+  text-align: left;
+  background-color: #1f4985;
+  }
+
+ul {
+  list-style-type: none;
+}
+
+.xyz .p:hover {
+  color: black;
+  transition: 0.2s;
+}
+
+.main_menu:hover .xyz {
+  display: block;
+  
+  width: 1000px;
+}
+
+.box99{
+display: none;
+position: fixed;
+/* top: 17%; */
+margin-top: 25px;
+left: 2%;
+width:1400px;
+background-color: #28316b;
+color: white;
+height: 300px;
+
+/* border: 1px solid red; */
+}
+.box99:hover{
+display: block;
+cursor:pointer
+}
+.box98:hover,.box97:hover,.box96:hover,.box95:hover,.box94:hover{
+background-color: #e42529;
+}
+.box98:hover+div{
+display: block;
+
+}
+.box97:hover+div{
+display: block;
+}
+.box96:hover+div{
+display: block;
+}
+.box95:hover+div{
+display: block;
+}
+.box94:hover+div{
+display: block;
+}
+.each-slide-effect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
