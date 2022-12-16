@@ -22,22 +22,11 @@ import {CartContext} from "../Context/CartContext/CartContextProvider";
 import {addToCart} from "../Context/CartContext/action"
 import { StarIcon } from "@chakra-ui/icons";
 
-
-
-async function getData() {
-  try {
-    const response = await axios.get('https://relianceapi.onrender.com/laptop');
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
-getData()
-
 const itemAlreadyExists = (id,cartItems) =>{
   if(cartItems.find((item)=>item.id === id)){
-    console.log(getData)
+    return true
   }
+  return false
 }
 
 const Product = () => {
@@ -47,25 +36,15 @@ const Product = () => {
   const [error, setError] = useState(false)
 
   const {state,dispatch} = useContext(CartContext)
-
-
-
+  const getdata = ()=>{
+    return axios.get("https://relianceapi.onrender.com/laptop")
+     
+  }
   useEffect(()=>{
+    getdata().then((res)=>{ setData(res.data)}).catch((e)=>{console.log(e)})
     setLoading(true);
-    getData()
-    .then((res)=>{
-      setData(res.data)
-      setError(false)
-    })
-    .catch(()=>{
-      setError(true)
-      setData([])
-    })
-    .finally(()=>{
-setLoading(false)
-    })
-  },[])
 
+  },[])
   if(loading){
     return (
       <Stack my={20}>
@@ -99,7 +78,7 @@ setLoading(false)
     )
   }
 
-  const t = ( watch)=>{
+  const t = ( data)=>{
     return(
       toast({
         title: 'Product Added to Cart.',
@@ -109,7 +88,8 @@ setLoading(false)
         isClosable: true,
       }),
 
-      dispatch(addToCart(watch))
+      dispatch(addToCart(data))
+     
     )
   }
 
@@ -117,8 +97,8 @@ setLoading(false)
   <Container maxW={{base:"full", md:"container.xl"}} p={{base:2, lg:0}}>
     <Grid  templateColumns={{base:"repeat(1,1fr)", md:"repeat(2,1fr)", lg:"repeat(4,1fr)"}} gap={4}>
 
-      {data && data.map((watch)=>(
-        <GridItem key={watch.id}>
+      {data && data.map((data)=>(
+        <GridItem key={data._id}>
 
 <Box  bg="#fff" boxShadow="md" _hover={{
                     boxShadow:"xl",
@@ -127,7 +107,7 @@ setLoading(false)
                 <Box  w="240px" h="215px" justifySelf="center">
                 <Image cursor="pointer" w="180px" _hover={{
                     w: "195px",
-                  }} src={watch.imag1} alt="" />
+                  }} src={data.imglink} alt="" />
 
                 </Box>
                 
@@ -145,7 +125,7 @@ setLoading(false)
                   cursor="pointer"
                   mb="15px"
                 >
-                 {watch.title}
+                 {data.name}
                 </Box>
 
                 <Box display="flex" mt="2" alignItems="center">
@@ -155,7 +135,7 @@ setLoading(false)
                       <StarIcon
                         key={i}
                         color={
-                          i < watch.name ? "rgb(255, 164, 28)" : "gray.300"
+                          i < data.name ? "rgb(255, 164, 28)" : "gray.300"
                         }
                       />
                     ))}
@@ -166,7 +146,7 @@ setLoading(false)
                     fontSize="sm"
                     fontWeight="500"
                   >
-                    ( {watch.name} reviews)
+                    ( {data.name} reviews)
                   </Box>
                 </Box>
 
@@ -178,19 +158,19 @@ setLoading(false)
                       fontSize="15px"
                       fontWeight="bold"
                     >
-                      ₹{watch.dealprice}.00
+                      ₹{data.dealprice}.00
                     </Box>
                   </Box>
 
                   <Box>
                     <Box as="span" a="s">
-                      ₹{watch.dealpricex}.00
+                      ₹{data.dealpricex}.00
                     </Box>
                   </Box>
 
                   <Box>
                     <Box as="span" >
-                      {watch.savepricex}
+                      {data.savepricex}
                     </Box>
                   </Box>
 
@@ -211,7 +191,7 @@ setLoading(false)
 
                   <Box display="flex" gap="5px" my="10px" justifyContent="center">
 
-                  <Button colorScheme="red" varient="outline" disabled={itemAlreadyExists(watch.id,state)} onClick={ ()=>  t(watch) }>
+                  <Button colorScheme="red" varient="outline" disabled={itemAlreadyExists(data.id,state)} onClick={ ()=>  t(data) }>
                     Add To Cart
                   </Button>
 
