@@ -6,6 +6,7 @@ import Login from "../Pages/Login"
 import Signup from '../Pages/Signup'
 import SmartPhones from "../Pages/SmartPhones"
 import Pagenotfound from '../Pages/Pagenotfound'
+// import Laptop from '../Pages/Laptop'
 
 function AllRoutes() {
   return (
@@ -15,6 +16,7 @@ function AllRoutes() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/cart" element={<Cart/>}></Route>
+        {/* <Route path="/laptop" element={<Laptop/>}></Route> */}
         <Route path="/smartphones" element={<SmartPhones/>}></Route>
         <Route path="*" element={<Pagenotfound/>}></Route>
     </Routes>
