@@ -2,8 +2,8 @@
 // import {Routes,Route} from "react-router-dom"
 // import Cart from '../Pages/Cart'
 // import Home from "../Pages/Home"
-// import Login from "../Pages/Login"
-// import Signup from '../Pages/Signup'
+import Login from "../Login_Page/Login"
+import Signup from '../Login_Page/Signup'
 import SmartPhones from "../Pages/SmartPhones"
 import Pagenotfound from '../Pages/Pagenotfound'
 
@@ -61,12 +61,12 @@ const AllRoutes = () => {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
-        <Route path="/cart" element={<Cart/>}></Route>
+        {/* <Route path="/cart" element={<Cart/>}></Route> */}
         <Route path="/admin-login" element= {<Loginforadmin/>}></Route>
    
-        <Route path="/smartphones" element={<SmartPhones/>}></Route>
-    <Routes>
-        <Route path='/' element={<Home/>}/>
+        {/* <Route path="/smartphones" element={<SmartPhones/>}></Route> */}
+    {/* <Routes> */}
+        {/* <Route path='/' element={<Home/>}/> */}
         <Route path='/smartPhones' element={<SmartPhones/>}/>
 
         <Route path="*" element={<Pagenotfound/>}></Route>
@@ -85,6 +85,7 @@ const AllRoutes = () => {
         {/* <Route path='/final' element={<Final/>}/> */}
         {/* <Route path='/item/:id' element={<EachProduct/>}/> */}
     </Routes>
+    </div>
   )
 }
 
