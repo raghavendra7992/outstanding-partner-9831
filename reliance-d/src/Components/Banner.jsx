@@ -1,7 +1,7 @@
 import React from 'react'
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
-import Style from "./Home.module.css";
+// import Style from "./Home.module.css";
 import ProductSlide from './ProductSlide';
 
 const Banner = ({list}) => {
