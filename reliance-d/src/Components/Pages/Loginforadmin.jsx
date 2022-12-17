@@ -19,25 +19,12 @@ import {useNavigate} from "react-router-dom"
 
 
 const Loginforadmin=()=> {
-    const [text, setText] = useState({
-        email : "",
-        password:""
-    })
-    const handelChangeInput  =(e)=>{
-        setText({...text,[e.target.type]:e.target.value})
-    }
+   const [email,setEmail]= useState("")
+   const [password,setPassword]=useState("")
+   
     const navigate = useNavigate()
     const handelSubmit = ()=>{
-        if(text.email === "reliance@gmail.com" && text.password === "ambani"){
-            //send dashboard
-            navigate("/admin-Dashboard")
-        }else if(text.email === "reliance@gmail.com" && text.password !== "ambani"){
-            //password wrong
-        }else if(text.email !== "reliance@gmail.com" && text.password === "ambani"){
-            //email wrong
-        }else{
-            //all this are wrong
-        }
+        console.log(email,password)
     }
 
     return (
@@ -61,11 +48,11 @@ const Loginforadmin=()=> {
                     <Stack spacing={4}>
                         <FormControl id="email">
                             <FormLabel>Email address</FormLabel>
-                            <Input type="email" value={text.email} onChange={handelChangeInput}/>
+                            <Input type="email"  onChange={(e) =>setEmail(e.target.value)}/>
                         </FormControl>
                         <FormControl id="password">
                             <FormLabel>Password</FormLabel>
-                            <Input type="password" value={text.password} onChange={handelChangeInput}/>
+                            <Input type="password"  onChange={(e) => setPassword(e.target.value)} />
                         </FormControl>
                         <Stack spacing={10}>
                             <Stack
