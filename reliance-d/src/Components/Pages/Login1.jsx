@@ -20,6 +20,7 @@ const Login = () => {
             else
             setFirst(true)
           }}>PROCEED</Button>
+          <Button  onClick={()=>navigate("../admin-login")} cursor="pointer"><i class="fa-solid fa-user"></i>Admin_Login </Button>
         </Box>
         <br/>
     </div>
