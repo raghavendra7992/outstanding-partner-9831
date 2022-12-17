@@ -6,6 +6,8 @@ import "./Navbar.css";
 import Home from './Home';
 import { AppContext } from './AppContext';
 // import searchicon from "./searchicon.svg"
+import img from "./assests/digital_shop.jpg"
+
 
 const Navbar = () => {
 
@@ -51,8 +53,10 @@ const Navbar = () => {
         <Flex>
           <Spacer/>
         <Box width='150px'>
-            <Image src='https://www.reliancedigital.in/build/client/images/loaders/rd_logo.svg' alt='logo' onClick={()=>navigate("/")} style={{cursor:"pointer"}}/>
-        </Box>
+            <Image src={img} alt='logo' onClick={()=>navigate("/")} style={{cursor:"pointer",marginBottom:"35px"}}/>
+            
+
+</Box>
         <Spacer/><Spacer/><Spacer/>
         <Input htmlSize={65} color="black" width='auto' bg={"white"} borderRadius="25px" placeholder='Find your favorite products' onChange={(e)=>setsearch1(e.target.value[0].toUpperCase() + e.target.value.substring(1))} />
         {/* <img src={searchicon} alt='none' style={{marginLeft:"-50px",zIndex:2,height:"30px",cursor:"pointer",marginTop:"7px"}} onClick={handle}/> */}
@@ -66,6 +70,9 @@ const Navbar = () => {
         
         <Spacer/>
         <Box onClick={()=>navigate("/Login1")} cursor="pointer"><i class="fa-solid fa-user"></i> {firstName!==""?firstName:"Login"}</Box>
+        <Spacer/>
+        
+        
         <Spacer/>
         </Flex>
         </Flex>
