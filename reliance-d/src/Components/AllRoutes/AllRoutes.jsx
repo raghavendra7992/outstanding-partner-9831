@@ -2,34 +2,34 @@
 // import {Routes,Route} from "react-router-dom"
 import Cart from '../Pages/Cart'
 // import Home from "../Pages/Home"
+
 // import Login from "../Pages/Login"
 import Signup from '../Pages/Signup'
 import SmartPhones from "../Pages/SmartPhones";
 import Pagenotfound from "../Pages/Pagenotfound";
+
+import Login from "../Login_Page/Login"
+import Signup from '../Login_Page/Signup'
+import SmartPhones from "../Pages/SmartPhones"
+import Pagenotfound from '../Pages/Pagenotfound'
+
+import Loginforadmin from '../Pages/Loginforadmin'
+
+
 
 import Loginforadmin from "../Pages/Loginforadmin";
 
 
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-// import Cart from '../Pages/Cart'
-// import Checkout from '../Pages/Checkout'
-// import EachProduct from '../Pages/EachProduct'
-// import Final from '../Pages/Final'
-// import Laptop from '../Pages/Laptop'
+
 import Login from '../Pages/Login'
-// import Payments from '../Pages/Payments'
-// import Phone from '../Pages/Phone'
-// import Register from '../Pages/Register'
-// import Search from '../Pages/Search'
-// import SmallAppliances from '../Pages/SmallAppliances'
-// import SmartWatches from '../Pages/SmartWatches'
-// import Tablets from '../Pages/Tablets'
-// import TopSellers from '../Pages/TopSellers'
+
 import Home from "../Pages/Home";
 
 const AllRoutes = () => {
   return (
+
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
@@ -41,6 +41,21 @@ const AllRoutes = () => {
      
       <Route path="/" element={<Home />} />
       <Route path="/smartPhones" element={<SmartPhones />} />
+
+
+    <div>
+        <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/signup" element={<Signup/>}></Route>
+        {/* <Route path="/cart" element={<Cart/>}></Route> */}
+        <Route path="/admin-login" element= {<Loginforadmin/>}></Route>
+   
+        {/* <Route path="/smartphones" element={<SmartPhones/>}></Route> */}
+    {/* <Routes> */}
+        {/* <Route path='/' element={<Home/>}/> */}
+        <Route path='/smartPhones' element={<SmartPhones/>}/>
+
 
       <Route path="*" element={<Pagenotfound />}></Route>
       {/* <Route path='/laptops' element={<Laptop/>}/>
@@ -58,6 +73,7 @@ const AllRoutes = () => {
       {/* <Route path='/final' element={<Final/>}/> */}
       {/* <Route path='/item/:id' element={<EachProduct/>}/> */}
     </Routes>
+
   );
 };
 
