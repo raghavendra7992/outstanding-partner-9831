@@ -1,17 +1,15 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 import { AppContext } from '../context/AppContext';
 import Banner from './Banner';
-import Footer from './Footer';
 import Style from "./Home.module.css";
 import ProductSlide from './ProductSlide';
 import ProductSlide2 from './ProductSlide2';
 
 const Home = () => {
 const navigate=useNavigate()
-    const {images,properties1,addItems1,addItems2,addItems3,addItems4,addItems5,addItems11,
+    const {images,addItems1,addItems2,addItems3,addItems4,addItems5,addItems11,
       addItems6,addItems7,addItems8, addItems9, addItems10, bigarr}=useContext(AppContext)
 
       useEffect(() => {

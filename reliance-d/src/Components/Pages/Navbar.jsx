@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const navigate=useNavigate()
   const {firstName,setsearch,car} = useContext(AppContext)
-  const arr=[{a:"laptop",b:"/laptops"},{a:"Smartphone",b:"/smartphones"},{a:"smartphone",b:"/smartphones"},{a:"phone",b:"/smartphones"},{a:"watch",b:"/smartwatches"},{a:"tablet",b:"/tablets"},{a:"Laptop",b:"/laptops"}]
+  const arr=[{a:"laptop",b:"/laptops"},{a:"SmartPhone",b:"/smartPhones"},{a:"smartPhones",b:"/smartPhones"},{a:"phone",b:"/smartPhones"},{a:"watch",b:"/smartwatches"},{a:"tablet",b:"/tablets"},{a:"Laptop",b:"/laptops"}]
   const [search1, setsearch1] = useState("")
   const handle=()=>{
       console.log(search1)
@@ -65,7 +65,7 @@ const Navbar = () => {
         {car>0&&<Box style={{width:"25px",height:"25px",borderRadius:"50%",backgroundColor:"black"}}>{car>0?car:""}</Box> }Cart</Box>
         
         <Spacer/>
-        <Box onClick={()=>navigate("/login")} cursor="pointer"><i class="fa-solid fa-user"></i> {firstName!==""?firstName:"Login"}</Box>
+        <Box onClick={()=>navigate("/Login")} cursor="pointer"><i class="fa-solid fa-user"></i> {firstName!==""?firstName:"Login"}</Box>
         <Spacer/>
         </Flex>
         </Flex>
@@ -75,7 +75,7 @@ const Navbar = () => {
       <div className="box99">
 <div style={{display:"flex",gap:"2rem",paddingLeft:"50px",height:"100%"}}> 
 <div style={{display:"flex",flexDirection:"column",alignItems:"flex-start",justifyContent:"space-between"}}> 
-<p onClick={()=>navigate("/smartphone")}>Smartphones</p>
+<p onClick={()=>navigate("/smartPhones")}>Smartphones</p>
 <p onClick={()=>{setsearch("OnePlus");navigate("/search")}}>OnePlus Nord 2T 5G</p>
 <p onClick={()=>navigate("/smartwatches")}>Wearable Technology</p>
 <p>Smart Watch Accessories</p>
