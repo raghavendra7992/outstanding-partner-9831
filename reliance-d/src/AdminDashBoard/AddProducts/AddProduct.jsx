@@ -1,28 +1,7 @@
-import axios from "axios";
-
 import React, { useState } from "react";
 import "./addProduct.css";
 
-// const getData = async (payload, category) => {
-
-//   await axios
-//   .post(`https://relianceapi.onrender.com/${category}`, { payload })
- 
-
-// };
-
 function AddProduct() {
-  // const stNum=()=>{
-  // parseInt()
-
-  // }
-
-  // function roughScale(x, base) {
-  //   const parsed = parseInt(x, base);
-  //   if (isNaN(parsed)) { return 0; }
-  //   return parsed * 100;
-  // }
-
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [mrp, setMrp] = useState(Number);
@@ -40,18 +19,6 @@ function AddProduct() {
   const [img3, setImg3] = useState("");
   const [isId, setIsId] = useState(Number);
   const [category, setCategory] = useState("");
-
-  //   "name": "Samsung HW-T420/XL 2.1 Channel Sound bar",
-  // "MRP": 18499,
-  // "MRPx": "₹18,499",
-  // "brand": "Samsung",
-  // "dealprice": 11490,
-  // "dealpricex": "₹11,490",
-  // "discount": 38,
-  // "discountx": "38%",
-  // "saveprice": 7010,
-  // "savepricex": "₹7,010",
-  // "cashback": "no",
 
   const obj = {
     id: isId,
@@ -74,19 +41,17 @@ function AddProduct() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // getData(payload)
 
     const res = await fetch(`https://relianceapi.onrender.com/${category}`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(obj),
     });
 
     const data = await res.json();
-    console.log(data)
-    // console.log(obj, category);
+    console.log(data);
   };
 
   return (
@@ -237,13 +202,46 @@ function AddProduct() {
             </select>
           </div>
         </div>
-        {/* <input type="submit" value="Submit" /> */}
+
         <button>Submit</button>
       </form>
     </div>
   );
 }
 export default AddProduct;
+
+// <input type="submit" value="Submit" />
+// getData(payload)
+// console.log(obj, category);
+
+// const getData = async (payload, category) => {
+
+//   await axios
+//   .post(`https://relianceapi.onrender.com/${category}`, { payload })
+
+// };
+// const stNum=()=>{
+// parseInt()
+
+// }
+
+// function roughScale(x, base) {
+//   const parsed = parseInt(x, base);
+//   if (isNaN(parsed)) { return 0; }
+//   return parsed * 100;
+// }
+
+//   "name": "Samsung HW-T420/XL 2.1 Channel Sound bar",
+// "MRP": 18499,
+// "MRPx": "₹18,499",
+// "brand": "Samsung",
+// "dealprice": 11490,
+// "dealpricex": "₹11,490",
+// "discount": 38,
+// "discountx": "38%",
+// "saveprice": 7010,
+// "savepricex": "₹7,010",
+// "cashback": "no",
 
 // https://www.codinglabweb.com/2022/12/create-registration-form-html-css.html
 

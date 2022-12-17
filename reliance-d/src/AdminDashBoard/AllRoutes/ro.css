@@ -2,7 +2,35 @@
     width: 70%;
     height: 150vh;
     box-sizing: border-box;
-    padding: 20px 140px 20px 40px;
+    padding: 20px 140px 0px 40px;
     display: flex;
     justify-content: first baseline;
 }
+
+@media screen and(max-width:612px){
+    .rot{
+        width: 100%;
+        padding: 0px ;
+    }
+    }
+
+
+
+    @media screen and (max-width: 500px){
+        .rot {
+          width: 100%;
+          padding: 0px;
+        }
+      }
+    @media screen and (max-width: 390px){
+        .rot {
+          width: 100%;
+          padding: 0px;
+        }
+      }
+      @media screen and (max-width: 280px){
+        .rot {
+          width: 100%;
+          padding: 0px;
+        }
+      }

@@ -16,8 +16,8 @@ const SideBar = () => {
 		},
 		{	
 			id:2,
-			text: "Admin Profile",
-			to:"/adminProfile",
+			text: "Users",
+			to:"/users",
 			
 		},
 		{
