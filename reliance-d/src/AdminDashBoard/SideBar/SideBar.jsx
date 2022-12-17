@@ -8,45 +8,54 @@ const SideBar = () => {
 	const [isExpanded, setExpendState] = useState(true);
 	const menuItems = [
 		{
+			id:1,
 			text: "Dashboard",
 			to:"/",
-			// icon: "grid",
+			icon:"https://cdn-icons-png.flaticon.com/512/9147/9147067.png",
+			
 		},
-		{
+		{	
+			id:2,
 			text: "Admin Profile",
 			to:"/adminProfile",
-			// icon: "icons/user.svg",
+			
 		},
 		{
+			id:3,
 			text: "Add Products",
 			to:"/addProduct",
-			// icon: "icons/shopping-cart.svg",
+		
 		},
-		{
+		{	
+			id:4,
 			text: "Messages",
 			to:"/messages",
-			// icon: "icons/message.svg",
+			
 		},
-		{
+		{	
+			id:5,
 			text: "Analytics",
 			to:"/analytics",
-			// icon: "icons/pie-chart.svg",
+		
 		},
-		{
+		{	
+			id:6,
 			text: "File Manager",
 			to:"/fileManager",
-			// icon: "icons/folder.svg",
+			
 		},
 		
-		{
+		{	
+			id:8,
 			text: "Saved Items",
 			to:"/savedItems",
-			// icon: "icons/heart.svg",
+			
 		},
 		{
+			id:9,
 			text: "Settings",
 			to:"/settings",
-			// icon: "icons/settings.svg",
+			icon: "icons/settings.svg",
 		},
 	];
 	return (
@@ -61,7 +70,7 @@ const SideBar = () => {
 				<div className="nav-heading">
 					{isExpanded && (
 						<div className="nav-brand">
-							<img src="https://avatars.githubusercontent.com/u/104028016?v=4" alt="" srcset="" />
+							<img src="https://avatars.githubusercontent.com/u/104028016?v=4" alt="" srcset=""  />
 							<h2>Digital Shop</h2>
 						</div>
 					)}
@@ -82,7 +91,7 @@ const SideBar = () => {
 							className={isExpanded ? "menu-item" : "menu-item menu-item-NX"}
 							to={e.to}
 						>
-							<img className="menu-item-icon" src={e.icon} alt="" srcset="" />
+							<img className="menu-item-icon" src={e.icon}  alt="" srcset="" />
 							{isExpanded && <p>{e.text}</p>}
 						</Link>
 					))}

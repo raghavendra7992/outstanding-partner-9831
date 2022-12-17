@@ -1,7 +1,28 @@
+import axios from "axios";
+
 import React, { useState } from "react";
 import "./addProduct.css";
 
+// const getData = async (payload, category) => {
+
+//   await axios
+//   .post(`https://relianceapi.onrender.com/${category}`, { payload })
+ 
+
+// };
+
 function AddProduct() {
+  // const stNum=()=>{
+  // parseInt()
+
+  // }
+
+  // function roughScale(x, base) {
+  //   const parsed = parseInt(x, base);
+  //   if (isNaN(parsed)) { return 0; }
+  //   return parsed * 100;
+  // }
+
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [mrp, setMrp] = useState(Number);
@@ -17,7 +38,8 @@ function AddProduct() {
   const [img1, setImg1] = useState("");
   const [img2, setImg2] = useState("");
   const [img3, setImg3] = useState("");
-  // const [category, setCategory] = useState("");
+  const [isId, setIsId] = useState(Number);
+  const [category, setCategory] = useState("");
 
   //   "name": "Samsung HW-T420/XL 2.1 Channel Sound bar",
   // "MRP": 18499,
@@ -32,37 +54,39 @@ function AddProduct() {
   // "cashback": "no",
 
   const obj = {
+    id: isId,
     name: name,
     imglink: image,
-    MRP:mrp ,
-    MRPx:mrp,
+    MRP: mrp,
+    MRPx: mrp,
     brand: brand,
-     dealprice:dealPrice,
-     dealpricex:dealPriceX ,
+    dealprice: dealPrice,
+    dealpricex: dealPriceX,
     discount: discount,
-    discountx:discountX ,
-    saveprice:savePrice,
-    savepricex:savePriceX ,
+    discountx: discountX,
+    saveprice: savePrice,
+    savepricex: savePriceX,
     cashback: cashback,
     img1: img1,
     img2: img2,
     img3: img3,
+    category: category,
   };
   const handleSubmit = async (event) => {
-
     event.preventDefault();
+    // getData(payload)
 
+    const res = await fetch(`https://relianceapi.onrender.com/${category}`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj),
+    });
 
-    // const res = await fetch(`https://relianceapi.onrender.com/soundbar`, {
-    //   method: "POST",
-    //   headers: {
-    //     "application-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(obj),
-    // });
-
-    // const data = await res.json();
-    console.log(obj);
+    const data = await res.json();
+    console.log(data)
+    // console.log(obj, category);
   };
 
   return (
@@ -70,11 +94,18 @@ function AddProduct() {
       <form action="#" className="form" onSubmit={handleSubmit}>
         <div className="input-box">
           <input
+            onChange={(e) => setIsId(e.target.value)}
+            value={isId}
+            type="number"
+            placeholder=" Product Id"
+          />
+        </div>
+        <div className="input-box">
+          <input
             onChange={(e) => setName(e.target.value)}
             value={name}
             type="text"
             placeholder=" Name"
-            required
           />
         </div>
 
@@ -84,7 +115,6 @@ function AddProduct() {
             value={image}
             type="text"
             placeholder="Product Image"
-            required
           />
         </div>
 
@@ -95,7 +125,6 @@ function AddProduct() {
               value={brand}
               type="text"
               placeholder="Brand"
-              required
             />
           </div>
         </div>
@@ -107,14 +136,12 @@ function AddProduct() {
               value={mrp}
               type="number"
               placeholder="MRP"
-              required
             />
             <input
               onChange={(e) => setMrpX(e.target.value)}
               value={mrpX}
               type="text"
               placeholder="MRP-X"
-              required
             />
           </div>
 
@@ -124,14 +151,12 @@ function AddProduct() {
               value={dealPrice}
               type="number"
               placeholder="Deal Price"
-              required
             />
             <input
               onChange={(e) => setDealPriceX(e.target.value)}
               value={dealPriceX}
               type="text"
               placeholder="Deal Price - X"
-              required
             />
           </div>
 
@@ -141,14 +166,12 @@ function AddProduct() {
               value={discount}
               type="number"
               placeholder="Discount"
-              required
             />
             <input
               onChange={(e) => setDiscountX(e.target.value)}
               value={discountX}
               type="text"
               placeholder="Discount -X"
-              required
             />
           </div>
 
@@ -158,14 +181,12 @@ function AddProduct() {
               value={savePrice}
               type="number"
               placeholder="Save Price"
-              required
             />
             <input
               onChange={(e) => setSavePriceX(e.target.value)}
               value={savePriceX}
               type="text"
               placeholder="save Price - X"
-              required
             />
           </div>
 
@@ -175,14 +196,12 @@ function AddProduct() {
               value={cashback}
               type="text"
               placeholder="Cashback"
-              required
             />
             <input
               onChange={(e) => setImg1(e.target.value)}
               value={img1}
               type="text"
               placeholder="Image 1"
-              required
             />
           </div>
 
@@ -192,34 +211,33 @@ function AddProduct() {
               value={img2}
               type="text"
               placeholder="Image 2"
-              required
             />
             <input
               onChange={(e) => setImg3(e.target.value)}
               value={img3}
               type="text"
               placeholder="Image 3"
-              required
             />
           </div>
 
-          {/* <div
+          <div
             class="select-box"
             name=""
             id=""
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            placeholder="Category">
+            placeholder="Category"
+          >
             <select>
               <option hidden>Category</option>
-              <option>Mobile</option>
-              <option>Soundbar</option>
-              <option>Laptop</option>
-              <option>Monitors</option>
+              <option value="telivison">Television</option>
+              <option value="soundbar">Soundbar</option>
+              <option value="laptop">Laptop</option>
+              <option value="watch">Watch</option>
             </select>
-          </div> */}
+          </div>
         </div>
-        <input type="submit" value="Submit" />
+        {/* <input type="submit" value="Submit" /> */}
         <button>Submit</button>
       </form>
     </div>
@@ -229,8 +247,7 @@ export default AddProduct;
 
 // https://www.codinglabweb.com/2022/12/create-registration-form-html-css.html
 
-
-  /* <div classNameName="inputForm">
+/* <div classNameName="inputForm">
         <label htmlFor=""> Name
           <input style={{outLine:"1px solid black" }} placeholder="Name" />
         </label>
@@ -287,4 +304,3 @@ export default AddProduct;
           <input placeholder="Image3" />
         </label>
       </div> */
-
