@@ -65,7 +65,7 @@ const Navbar = () => {
         {car>0&&<Box style={{width:"25px",height:"25px",borderRadius:"50%",backgroundColor:"black"}}>{car>0?car:""}</Box> }Cart</Box>
         
         <Spacer/>
-        <Box onClick={()=>navigate("/Login")} cursor="pointer"><i class="fa-solid fa-user"></i> {firstName!==""?firstName:"Login"}</Box>
+        <Box onClick={()=>navigate("/Login1")} cursor="pointer"><i class="fa-solid fa-user"></i> {firstName!==""?firstName:"Login"}</Box>
         <Spacer/>
         </Flex>
         </Flex>
