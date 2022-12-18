@@ -1,10 +1,11 @@
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Checkbox, Flex, Input, RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack, StackDivider, Text, VStack } from '@chakra-ui/react'
-import React, { useContext, useEffect, useState } from 'react'
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Checkbox,  Flex,  Input, RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack,  StackDivider, Text, VStack } from '@chakra-ui/react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { AppContext } from './AppContext'
 import Grid1 from './Grid1';
-const SmartWatches = () => {
-    const {addItems8,inlove}=useContext(AppContext)
+import { reducer } from './reducer';
+const Tablets = () => {
+    const {addItems10,inlove}=useContext(AppContext)
     const handle=(e)=>{
         let [l,r]=e;
        let left=l*200+26999;
@@ -15,24 +16,25 @@ const SmartWatches = () => {
     }
     const [first, setFirst] = useState(26999)
     const [second, setSecond] = useState(46999)
-    const [exclude, setExclude] = useState(false)
+    const [item1, setitem1] = useState(addItems10)
     const [brand1, setBrand1] = useState("")
-    const [item1, setitem1] = useState(addItems8)
+    const [exclude, setExclude] = useState(false)
     const handleSlider=()=>{
-        let y=addItems8.filter(e=>(e.price>first&&e.price<second))
+        let y=addItems10.filter(e=>(e.price>first&&e.price<second))
         setitem1(y)
     }
     const handleBrand=(val,check)=>{
         let g=check.target.checked;
         if(g===true)
-        {let y=addItems8.filter(e=>e.name.includes(val))
+        {let y=addItems10.filter(e=>e.name.includes(val))
         setitem1(y)
         setBrand1(val)}
         else
-        {setitem1(addItems8)
+        {setitem1(addItems10)
             setBrand1("")}
     }
 
+    const [state, dispatch] = useReducer(reducer,inlove)
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
@@ -82,21 +84,21 @@ const SmartWatches = () => {
                 <Text>Category</Text>
                 <Flex gap="1rem">
                 <Checkbox />
-                <Text>SmartWatches</Text>
+                <Text>Tablets</Text>
                 </Flex>
              </VStack>
              <VStack alignItems="flex-start" paddingLeft="10px">
                 <Text>Category</Text>
-                <Flex gap="1rem" > <Checkbox onChange={(e)=>handleBrand("Boltt",e)}/>
-                <Text>Boltt</Text>
+                <Flex gap="1rem" > <Checkbox onChange={(e)=>handleBrand("Lenovo",e)}/>
+                <Text>Lenovo</Text>
                 </Flex>
                 <Flex gap="1rem">
                 <Checkbox onChange={(e)=>handleBrand("Apple",e)}/>
                 <Text>Apple</Text>
                 </Flex>
                 <Flex gap="1rem">
-                <Checkbox onChange={(e)=>handleBrand("Hammer",e)}/>
-                <Text>Hammer</Text>
+                <Checkbox onChange={(e)=>handleBrand("Samsung",e)}/>
+                <Text>Samsung</Text>
                 </Flex>
              </VStack>
             </VStack>
@@ -124,4 +126,4 @@ const SmartWatches = () => {
   )
 }
 
-export default SmartWatches
+export default Tablets
