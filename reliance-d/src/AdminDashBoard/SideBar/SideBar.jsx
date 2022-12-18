@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./sideBar.css";
-// import grid from "../icons/grid.svg"
+import grid from "../icons/grid.svg"
 
 
 const SideBar = () => {
@@ -78,7 +78,7 @@ const SideBar = () => {
 				</div>
 				<div className="nav-menu">
 					{menuItems.map((e) => (
-						<Link key={e.id}
+						<Link
 							className={isExpanded ? "menu-item" : "menu-item menu-item-NX"}
 							to={e.to}
 						>
@@ -105,9 +105,7 @@ export default SideBar;
 
 
 
-
-	
-	/* <div className="nav-footer">
+{/* <div className="nav-footer">
 				{isExpanded && (
 					<div className="nav-details">
 						<img
@@ -123,4 +121,4 @@ export default SideBar;
 					</div>
 				)}
 				<img className="logout-icon" src="icons/logout.svg" alt="" srcset="" />
-			</div> */
+			</div> */}
