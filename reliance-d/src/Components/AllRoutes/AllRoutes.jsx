@@ -8,9 +8,9 @@ import Pagenotfound from '../Pages/Pagenotfound'
 import Loginforadmin from '../Pages/Loginforadmin'
 import React from "react";
 import Register from "../Pages/Register";
-import AdminProfile from "../../AdminDashBoard/AdminProdile/AdminProfile"
+import AdminProfile from "../../AdminDashBoard/AdminProfile/AdminProfile"
 import AddProduct from "../../AdminDashBoard/AddProducts/AddProduct"
-import Home1 from "../../AdminDashBoard/Home/Home1"
+import Home1 from "../../AdminDashBoard/Home/Home"
 import Message from "../../AdminDashBoard/Message/Message"
 import FileManager from '../../AdminDashBoard/FileManager/FileManager'
 import SavedItems from '../../AdminDashBoard/SavedItems/SavedItems'

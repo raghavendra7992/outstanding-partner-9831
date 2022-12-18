@@ -1,24 +1,4 @@
-// import "./App.css";
-// import AllRoutes from "./Components/AllRoutes/AllRoutes";
-// import Navbar from "./Components/Navbar/Navbar";
-// import Footer from "./Components/Navbar/Footer";
-
-
-// function App() {
-//   return (
-//     <div>
-//       <Navbar />
-
-//       <AllRoutes />
-//       <Footer />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-
+import MainRoute from './AdminDashBoard/MainRoute/MainRoute';
 import './App.css';
 import AllRoutes from './Components/AllRoutes/AllRoutes';
 import Footer from './Components/Pages/Footer';
@@ -29,8 +9,9 @@ function App() {
   return (
     <div className="App">
       <div style={{position:"sticky",top:"0",zIndex:1}}><Navbar/></div>
-      <AllRoutes/>
-      <Footer/>
+      {/* <AllRoutes/>
+      <Footer/> */}
+    <MainRoute/>
     </div>
   );
 }

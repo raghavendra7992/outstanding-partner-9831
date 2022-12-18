@@ -1,9 +1,9 @@
 // import 'home.css'
- function Home1() {
+ function Home() {
   return (
     <div>Home1</div>
   )
 }
 
 
-export default Home1
+export default Home

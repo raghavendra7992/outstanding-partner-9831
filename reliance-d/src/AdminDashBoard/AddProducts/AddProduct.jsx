@@ -1,49 +1,53 @@
-import { Input, Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import "./addProduct.css";
 
 function AddProduct() {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [mrp, setMrp] = useState("");
+  const [mrp, setMrp] = useState(Number);
   const [mrpX, setMrpX] = useState("");
   const [brand, setBrand] = useState("");
-  const [dealPrice, setDealPrice] = useState("");
+  const [dealPrice, setDealPrice] = useState(Number);
   const [dealPriceX, setDealPriceX] = useState("");
-  const [discount, setDiscount] = useState("");
+  const [discount, setDiscount] = useState(Number);
   const [discountX, setDiscountX] = useState("");
-  const [savePrice, setSavePrice] = useState("");
+  const [savePrice, setSavePrice] = useState(Number);
   const [savePriceX, setSavePriceX] = useState("");
   const [cashback, setCashback] = useState("");
   const [img1, setImg1] = useState("");
   const [img2, setImg2] = useState("");
   const [img3, setImg3] = useState("");
+  const [isId, setIsId] = useState(Number);
   const [category, setCategory] = useState("");
 
+  const obj = {
+    id: isId,
+    name: name,
+    imglink: image,
+    MRP: mrp,
+    MRPx: mrp,
+    brand: brand,
+    dealprice: dealPrice,
+    dealpricex: dealPriceX,
+    discount: discount,
+    discountx: discountX,
+    saveprice: savePrice,
+    savepricex: savePriceX,
+    cashback: cashback,
+    img1: img1,
+    img2: img2,
+    img3: img3,
+    category: category,
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const res = await fetch(`https://relianceapi.onrender.com/${category}`, {
       method: "POST",
       headers: {
-        "application-Type": "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name,
-        image,
-        mrp,
-        mrpX,
-        brand,
-        dealPrice,
-        dealPriceX,
-        discount,
-        discountX,
-        savePrice,
-        savePriceX,
-        cashback,
-        img1,
-        img2,
-        img3,
-      }),
+      body: JSON.stringify(obj),
     });
 
     const data = await res.json();
@@ -55,11 +59,18 @@ function AddProduct() {
       <form action="#" className="form" onSubmit={handleSubmit}>
         <div className="input-box">
           <input
+            onChange={(e) => setIsId(e.target.value)}
+            value={isId}
+            type="number"
+            placeholder=" Product Id"
+          />
+        </div>
+        <div className="input-box">
+          <input
             onChange={(e) => setName(e.target.value)}
             value={name}
             type="text"
             placeholder=" Name"
-            required
           />
         </div>
 
@@ -69,18 +80,16 @@ function AddProduct() {
             value={image}
             type="text"
             placeholder="Product Image"
-            required
           />
         </div>
 
-        <div className="column">
+        <div className="">
           <div className="input-box">
             <input
               onChange={(e) => setBrand(e.target.value)}
               value={brand}
-              type="number"
+              type="text"
               placeholder="Brand"
-              required
             />
           </div>
         </div>
@@ -90,16 +99,14 @@ function AddProduct() {
             <input
               onChange={(e) => setMrp(e.target.value)}
               value={mrp}
-              type="text"
+              type="number"
               placeholder="MRP"
-              required
             />
             <input
               onChange={(e) => setMrpX(e.target.value)}
               value={mrpX}
-              type="number"
+              type="text"
               placeholder="MRP-X"
-              required
             />
           </div>
 
@@ -107,16 +114,14 @@ function AddProduct() {
             <input
               onChange={(e) => setDealPrice(e.target.value)}
               value={dealPrice}
-              type="text"
+              type="number"
               placeholder="Deal Price"
-              required
             />
             <input
               onChange={(e) => setDealPriceX(e.target.value)}
               value={dealPriceX}
-              type="number"
+              type="text"
               placeholder="Deal Price - X"
-              required
             />
           </div>
 
@@ -124,16 +129,14 @@ function AddProduct() {
             <input
               onChange={(e) => setDiscount(e.target.value)}
               value={discount}
-              type="text"
+              type="number"
               placeholder="Discount"
-              required
             />
             <input
               onChange={(e) => setDiscountX(e.target.value)}
               value={discountX}
-              type="number"
+              type="text"
               placeholder="Discount -X"
-              required
             />
           </div>
 
@@ -141,16 +144,14 @@ function AddProduct() {
             <input
               onChange={(e) => setSavePrice(e.target.value)}
               value={savePrice}
-              type="text"
+              type="number"
               placeholder="Save Price"
-              required
             />
             <input
               onChange={(e) => setSavePriceX(e.target.value)}
               value={savePriceX}
-              type="number"
+              type="text"
               placeholder="save Price - X"
-              required
             />
           </div>
 
@@ -160,14 +161,12 @@ function AddProduct() {
               value={cashback}
               type="text"
               placeholder="Cashback"
-              required
             />
             <input
               onChange={(e) => setImg1(e.target.value)}
               value={img1}
-              type="number"
+              type="text"
               placeholder="Image 1"
-              required
             />
           </div>
 
@@ -177,30 +176,33 @@ function AddProduct() {
               value={img2}
               type="text"
               placeholder="Image 2"
-              required
             />
             <input
               onChange={(e) => setImg3(e.target.value)}
               value={img3}
-              type="number"
+              type="text"
               placeholder="Image 3"
-              required
             />
           </div>
-          <select
+
+          <div
+            class="select-box"
             name=""
             id=""
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="Category"
           >
-            <option value="">Category</option>
-            <option value="">Soundbar</option>
-            <option value="">Laptop</option>
-            <option value="">Watch</option>
-            <option value="">Television</option>
-          </select>
+            <select>
+              <option hidden>Category</option>
+              <option value="telivison">Television</option>
+              <option value="soundbar">Soundbar</option>
+              <option value="laptop">Laptop</option>
+              <option value="watch">Watch</option>
+            </select>
+          </div>
         </div>
+
         <button>Submit</button>
       </form>
     </div>
@@ -208,8 +210,42 @@ function AddProduct() {
 }
 export default AddProduct;
 
-{
-  /* <div classNameName="inputForm">
+// <input type="submit" value="Submit" />
+// getData(payload)
+// console.log(obj, category);
+
+// const getData = async (payload, category) => {
+
+//   await axios
+//   .post(`https://relianceapi.onrender.com/${category}`, { payload })
+
+// };
+// const stNum=()=>{
+// parseInt()
+
+// }
+
+// function roughScale(x, base) {
+//   const parsed = parseInt(x, base);
+//   if (isNaN(parsed)) { return 0; }
+//   return parsed * 100;
+// }
+
+//   "name": "Samsung HW-T420/XL 2.1 Channel Sound bar",
+// "MRP": 18499,
+// "MRPx": "₹18,499",
+// "brand": "Samsung",
+// "dealprice": 11490,
+// "dealpricex": "₹11,490",
+// "discount": 38,
+// "discountx": "38%",
+// "saveprice": 7010,
+// "savepricex": "₹7,010",
+// "cashback": "no",
+
+// https://www.codinglabweb.com/2022/12/create-registration-form-html-css.html
+
+/* <div classNameName="inputForm">
         <label htmlFor=""> Name
           <input style={{outLine:"1px solid black" }} placeholder="Name" />
         </label>
@@ -266,4 +302,3 @@ export default AddProduct;
           <input placeholder="Image3" />
         </label>
       </div> */
-}

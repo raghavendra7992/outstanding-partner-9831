@@ -366,3 +366,4 @@ const list1={flat,setflat,state,setstate,street,setstreet,city,setcity,total,set
     <AppContext.Provider value={list1}>{children}</AppContext.Provider>
   )
 }
+
