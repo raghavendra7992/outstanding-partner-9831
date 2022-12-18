@@ -43,9 +43,6 @@ const AllRoutes = () => {
             <Route path="/savedItems" element={<SavedItems/>} ></Route>
             <Route path="/settings" element={<Settings/>} ></Route>    
       <Route path="/smartphones" element={<SmartPhones />}></Route>
-
-
-
         </Routes>
        
 
