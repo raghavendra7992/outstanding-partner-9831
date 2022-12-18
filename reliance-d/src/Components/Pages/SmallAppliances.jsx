@@ -1,38 +1,39 @@
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Checkbox, Flex, Input, RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack, StackDivider, Text, VStack } from '@chakra-ui/react'
-import React, { useContext, useEffect, useState } from 'react'
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Checkbox,  Flex,  Input, RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack, StackDivider, Text, VStack } from '@chakra-ui/react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { AppContext } from './AppContext'
 import Grid1 from './Grid1';
-const SmartWatches = () => {
-    const {addItems8,inlove}=useContext(AppContext)
+import { reducer } from './reducer';
+const SmallAppliances = () => {
+    const {addItems2,inlove}=useContext(AppContext)
     const handle=(e)=>{
         let [l,r]=e;
-       let left=l*200+26999;
-       let right=46999-(100-r)*200;
+       let left=l*200+1000;
+       let right=21000-(100-r)*200;
     //    console.log(left,right)
        setFirst(left)
        setSecond(right)
     }
-    const [first, setFirst] = useState(26999)
-    const [second, setSecond] = useState(46999)
+    const [first, setFirst] = useState(1000)
+    const [second, setSecond] = useState(21000)
+    const [item1, setitem1] = useState(addItems2)
     const [exclude, setExclude] = useState(false)
     const [brand1, setBrand1] = useState("")
-    const [item1, setitem1] = useState(addItems8)
     const handleSlider=()=>{
-        let y=addItems8.filter(e=>(e.price>first&&e.price<second))
+        let y=addItems2.filter(e=>(e.price>first&&e.price<second))
         setitem1(y)
     }
     const handleBrand=(val,check)=>{
         let g=check.target.checked;
         if(g===true)
-        {let y=addItems8.filter(e=>e.name.includes(val))
+        {let y=addItems2.filter(e=>e.name.includes(val))
         setitem1(y)
         setBrand1(val)}
         else
-        {setitem1(addItems8)
+        {setitem1(addItems2)
             setBrand1("")}
     }
-
+    const [state, dispatch] = useReducer(reducer,inlove)
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
@@ -60,7 +61,7 @@ const SmartWatches = () => {
                             <RangeSliderThumb index={0} />
                             <RangeSliderThumb index={1} />
                     </RangeSlider>
-                    <Flex justifyContent={"space-between"} width="100%"><Text>₹26999</Text><Text>₹46999</Text></Flex>
+                    <Flex justifyContent={"space-between"} width="100%"><Text>₹1000</Text><Text>₹21000</Text></Flex>
                     <br/>
                     <Flex>
                         <Input value={first} onChange={(e)=>setFirst(e.target.value)}/>
@@ -82,21 +83,21 @@ const SmartWatches = () => {
                 <Text>Category</Text>
                 <Flex gap="1rem">
                 <Checkbox />
-                <Text>SmartWatches</Text>
+                <Text>SmallAppliancess</Text>
                 </Flex>
              </VStack>
              <VStack alignItems="flex-start" paddingLeft="10px">
                 <Text>Category</Text>
-                <Flex gap="1rem" > <Checkbox onChange={(e)=>handleBrand("Boltt",e)}/>
-                <Text>Boltt</Text>
+                <Flex gap="1rem" > <Checkbox onChange={(e)=>handleBrand("boAt",e)}/>
+                <Text>boAt</Text>
                 </Flex>
                 <Flex gap="1rem">
-                <Checkbox onChange={(e)=>handleBrand("Apple",e)}/>
-                <Text>Apple</Text>
+                <Checkbox onChange={(e)=>handleBrand("Prestige",e)}/>
+                <Text>Prestige</Text>
                 </Flex>
                 <Flex gap="1rem">
-                <Checkbox onChange={(e)=>handleBrand("Hammer",e)}/>
-                <Text>Hammer</Text>
+                <Checkbox onChange={(e)=>handleBrand("Lifelong",e)}/>
+                <Text>Lifelong</Text>
                 </Flex>
              </VStack>
             </VStack>
@@ -124,4 +125,4 @@ const SmartWatches = () => {
   )
 }
 
-export default SmartWatches
+export default SmallAppliances

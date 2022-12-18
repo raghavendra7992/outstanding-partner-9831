@@ -1,10 +1,10 @@
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Checkbox, Flex, Input, RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack, StackDivider, Text, VStack } from '@chakra-ui/react'
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Checkbox,  Flex, Input, RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack, StackDivider, Text, VStack } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from './AppContext'
 import Grid1 from './Grid1';
-const SmartWatches = () => {
-    const {addItems8,inlove}=useContext(AppContext)
+const Search = () => {
+    const {bigarr,search}=useContext(AppContext)
     const handle=(e)=>{
         let [l,r]=e;
        let left=l*200+26999;
@@ -15,27 +15,20 @@ const SmartWatches = () => {
     }
     const [first, setFirst] = useState(26999)
     const [second, setSecond] = useState(46999)
-    const [exclude, setExclude] = useState(false)
-    const [brand1, setBrand1] = useState("")
-    const [item1, setitem1] = useState(addItems8)
-    const handleSlider=()=>{
-        let y=addItems8.filter(e=>(e.price>first&&e.price<second))
-        setitem1(y)
+    const [list, setlist] = useState([])
+
+    const hand=()=>{
+        
+        const newbigarr=bigarr.filter(e=>e.name.includes(search))
+        setlist(newbigarr)
     }
-    const handleBrand=(val,check)=>{
-        let g=check.target.checked;
-        if(g===true)
-        {let y=addItems8.filter(e=>e.name.includes(val))
-        setitem1(y)
-        setBrand1(val)}
-        else
-        {setitem1(addItems8)
-            setBrand1("")}
-    }
+    // const [state, dispatch] = useReducer(reducer,inlove)
 
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+      hand();
+    }, [search])
+    
 
   return (
     <Box>
@@ -66,7 +59,7 @@ const SmartWatches = () => {
                         <Input value={first} onChange={(e)=>setFirst(e.target.value)}/>
                         <Text>to</Text>
                         <Input value={second} onChange={(e)=>setSecond(e.target.value)}/>
-                        <Button onClick={handleSlider}>GO</Button>
+                        <Button>GO</Button>
                     </Flex>
                 </VStack>
             </Box>
@@ -74,49 +67,27 @@ const SmartWatches = () => {
             <VStack alignItems="flex-start" paddingLeft="10px">
                 <Text>Availability</Text>
                 <Flex gap="1rem">
-                <Checkbox onChange={(e)=>setExclude(e.target.checked)}/>
-                <Text>Exclude out of Stock</Text>
-                </Flex>
-             </VStack>
-             <VStack alignItems="flex-start" paddingLeft="10px">
-                <Text>Category</Text>
-                <Flex gap="1rem">
                 <Checkbox />
-                <Text>SmartWatches</Text>
-                </Flex>
-             </VStack>
-             <VStack alignItems="flex-start" paddingLeft="10px">
-                <Text>Category</Text>
-                <Flex gap="1rem" > <Checkbox onChange={(e)=>handleBrand("Boltt",e)}/>
-                <Text>Boltt</Text>
-                </Flex>
-                <Flex gap="1rem">
-                <Checkbox onChange={(e)=>handleBrand("Apple",e)}/>
-                <Text>Apple</Text>
-                </Flex>
-                <Flex gap="1rem">
-                <Checkbox onChange={(e)=>handleBrand("Hammer",e)}/>
-                <Text>Hammer</Text>
+                <Text>Exclude out of Stock</Text>
                 </Flex>
              </VStack>
             </VStack>
             </Box>
             <Box>
-                <Flex color="#b0b5b9" justifyContent="flex-start" height="50px" paddingLeft="20px" alignItems="center">
-                        <Box>(Showing 1- {item1.length} products of {item1.length} products)</Box>
+                <Flex justifyContent="flex-start">
+                        <Box>(Showing 1- 7 products of 7 products)</Box>
                 </Flex>
                 <hr/><br/>
-                <Flex alignItems="center" gap="1rem">
-                    <Text paddingLeft="20px">Filters:</Text>
-                    <Flex gap="1rem">
-                        {exclude&&<Box border={"1px solid #D3D3D3"} padding="0px 10px 0px 10px">Exclude out of Stock</Box>}
-                        <Box border={"1px solid #D3D3D3"} padding="0px 10px 0px 10px">₹ {first} to ₹ {second}</Box>
-                        <Box border={"1px solid #D3D3D3"} padding="0px 10px 0px 10px">Brand: {brand1.length===0?"All":brand1}</Box>
+                <Flex>
+                    <Text>Filters</Text>
+                    <Flex>
+                        <Box>Exclude out of Stock</Box>
+                        <Box>10 to 20</Box>
                     </Flex>
                 </Flex>
             <Box>
             <hr/><br/>
-            <Grid1 list1={item1}/>
+            <Grid1 list1={list}/>
             </Box>
             </Box>
         </Flex>
@@ -124,4 +95,4 @@ const SmartWatches = () => {
   )
 }
 
-export default SmartWatches
+export default Search
