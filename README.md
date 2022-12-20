@@ -21,7 +21,7 @@ Reliance Digital is an Indian consumer electronics retailer. It is a subsidiary 
 </ol>
 
 ## Deployment Link
-Link:- <a href="https://digital-shopping.netlify.app/"></a>
+<a href="https://digital-shopping.netlify.app/">Reliance Digital</a>
 ## Presentation Video Link
 {Link}
 ## 🔗 My Team member Included
