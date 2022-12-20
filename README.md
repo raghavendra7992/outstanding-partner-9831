@@ -7,10 +7,10 @@ Reliance Digital is an Indian consumer electronics retailer. It is a subsidiary 
 <h1>Tech Stack used</h1>
 <h2>Here are some screen-shots from our website</h2>
 
-<img src="#"/>
+<img src="https://searchlogovector.com/wp-content/uploads/2020/04/reliance-digital-logo-vector.png"/>
 
 
-<img src= "#"/>
+<img src= "https://github.com/raghavendra7992/outstanding-partner-9831/blob/master/reliance-d/src/AdminDashBoard/icons/Reliance%20Digital%20Project.jpg?raw=true"/>
 <ol>
 <ul>Multiple pages with filter</ul>
   <ul></ul>
