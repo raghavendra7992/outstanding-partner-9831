@@ -33,4 +33,6 @@ Reliance Digital is an Indian consumer electronics retailer. It is a subsidiary 
    
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://krushana-chavan.github.io/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/krushana-chavan-25087822b/)
+
+
 <b>If you have any feedback, please reach out to us at LinkedIn handle.</b>
